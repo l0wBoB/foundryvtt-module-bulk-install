@@ -11,9 +11,9 @@ With this script you can command your server to download the modules itself inst
 2. Download and edit the [script.js](script.js) accordingly.
 3. Login to your Foundry instance and enter the setup menu.
 4. Open the developer tools of your web browser.
- - [Mozilla Firefox Tutorial](https://firefox-source-docs.mozilla.org/devtools-user/web_console/)
- - [Google Chrome Tutorial](https://developer.chrome.com/docs/devtools/open)
- - [Microsoft Edge Tutorial](https://learn.microsoft.com/en-us/microsoft-edge/devtools/overview#open-devtools)
+   - [Mozilla Firefox Tutorial](https://firefox-source-docs.mozilla.org/devtools-user/web_console/)
+   - [Google Chrome Tutorial](https://developer.chrome.com/docs/devtools/open)
+   - [Microsoft Edge Tutorial](https://learn.microsoft.com/en-us/microsoft-edge/devtools/overview#open-devtools)
 4. Inside the developer tools, navigate to the Console tab.
 5. Paste the content of your modified script.js here, then press Enter.
 6. ???
