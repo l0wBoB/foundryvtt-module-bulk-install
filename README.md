@@ -8,7 +8,7 @@ With this script you can command your server to download the modules itself inst
 
 # How-to?
 1. Gather the manifest urls of the modules you want to install or update.
-2. Download and edit the [script.js](script.js) accordingly.
+2. Download the [script.js](script.js), then edit it accordingly.
 3. Login to your Foundry instance and enter the setup menu.
 4. Open the developer tools of your web browser.
    - [Mozilla Firefox Tutorial](https://firefox-source-docs.mozilla.org/devtools-user/web_console/)
