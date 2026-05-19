@@ -14,7 +14,7 @@ const moduleList = [
   ".../module.json",
   ".../module.json"
 
-  // 🛑 dont't edit below this line (unless you know what you're doing) 🛑
+  // 🛑 don't edit below this line (unless you know what you're doing) 🛑
 ];
 // end of module list
 
@@ -39,7 +39,6 @@ async function bulkModuleInstall(moduleList) {
                             domain.includes("git.gay") ||
                             url.includes("/raw/branch/") ||
                             url.includes("/refs/heads/");
-
       if (isGitPlatform && pathParts.length >= 2) {
         const user = pathParts[0];
         const repo = pathParts[1];
@@ -47,8 +46,8 @@ async function bulkModuleInstall(moduleList) {
       } else {
         const cleanParts = pathParts.filter(p => p !== "module.json" && !p.includes(".json"));
         let folder = cleanParts.pop() || "package";
-        if (folder.length > 16) {
-          folder = `${folder.substring(0, 16)}...`;
+        if (folder.length > 20) {
+          folder = `${folder.substring(0, 20)}...`;
         }
         moduleName = `[${domain}] ${folder}`;
       }
