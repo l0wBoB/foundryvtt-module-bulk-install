@@ -20,4 +20,4 @@ With this script you can command your server to download the modules itself inst
 7. Profit
 
 # Will this script empty my bank account?
-I havent tested for that but it does what it should do with [Foundry VTT 13.351](https://foundryvtt.com/releases/13.351) running on [PM2](https://pm2.io/).
+I haven't tested for that. It does what it should do with [Foundry VTT 13.351](https://foundryvtt.com/releases/13.351) running on [PM2](https://pm2.io/).
