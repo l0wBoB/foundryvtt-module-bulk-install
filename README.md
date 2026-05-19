@@ -2,8 +2,8 @@
 This script enables you to install or update a list of Foundry VTT modules easily.
 
 # Why?
-Assume that you started supporting a new content creator and thus got access to their full catalog of Foundry modules.
-Usually, you would install such many modules manually by uploading the module folders into your server file system.
+Assume that you started supporting a new content creator and thus got access to their full catalog of Foundry modules.  
+Usually, you would install such many modules manually by uploading the module folders into your server file system.  
 With this script you can command your server to download the modules itself instead, and in a single step instead of one by one through the module browser.
 
 # How-to?
