@@ -15,7 +15,7 @@ With this script you can command your server to download the modules itself inst
    - [Google Chrome Tutorial](https://developer.chrome.com/docs/devtools/open)
    - [Microsoft Edge Tutorial](https://learn.microsoft.com/en-us/microsoft-edge/devtools/overview#open-devtools)
 4. Inside the developer tools, navigate to the Console tab.
-5. Paste the content of your modified script.js here, then press Enter.
+5. Paste the content of your modified script.js there, then press Enter.
 6. ???
 7. Profit
 
