@@ -1,0 +1,92 @@
+// start of module list
+const moduleList = [
+
+  // ℹ️ example:
+  //             "https://raw.githubusercontent.com/foundryvtt/Ferncombe/refs/heads/main/module.json",
+  //             "https://raw.githubusercontent.com/foundryvtt/restored-keep-levels/refs/heads/main/module.json"
+
+  // ⚠️ mind the url wrappers: ""
+  // ⚠️ mind the element separators: ,
+
+  // 👇 paste your module manifest urls here 👇
+
+  ".../module.json",
+  ".../module.json",
+  ".../module.json"
+
+  // 🛑 dont't edit below this line (unless you know what you're doing) 🛑
+];
+// end of module list
+
+// start of script
+async function bulkModuleInstall(moduleList) {
+  console.log(`%c=== Script running, please stand by... ===`, "font-weight: bold;");
+  let successCount = 0;
+  for (let i = 0; i < moduleList.length; i++) {
+    const url = moduleList[i].trim();
+    const currentId = i + 1;
+    let moduleName = `module #${currentId}`;
+
+    // identify module names
+    try {
+      const urlObj = new URL(url);
+      const pathParts = urlObj.pathname.split('/').filter(Boolean);
+      let domain = urlObj.hostname.replace(/^(www|raw)\./, '');
+      const isGitPlatform = domain.includes("bitbucket.org") ||
+                            domain.includes("github.com") ||
+                            domain.includes("githubusercontent.com") ||
+                            domain.includes("gitlab.com") ||
+                            domain.includes("git.gay") ||
+                            url.includes("/raw/branch/") ||
+                            url.includes("/refs/heads/");
+
+      if (isGitPlatform && pathParts.length >= 2) {
+        const user = pathParts[0];
+        const repo = pathParts[1];
+        moduleName = `[${domain}] ${user}/${repo}`;
+      } else {
+        const cleanParts = pathParts.filter(p => p !== "module.json" && !p.includes(".json"));
+        let folder = cleanParts.pop() || "package";
+        if (folder.length > 16) {
+          folder = `${folder.substring(0, 16)}...`;
+        }
+        moduleName = `[${domain}] ${folder}`;
+      }
+    } catch (err) {
+      moduleName = `module #${currentId} (likely invalid URL)`;
+    }
+    
+    // beginn installation
+    console.log(`[${currentId}/${moduleList.length}] Installing "${moduleName}"...`);
+    try {
+      const response = await fetch("/setup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          action: "installPackage",
+          type: "module",
+          manifest: url
+        })
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP status code: ${response.status}`);
+      }
+      const result = await response.json();
+      if (result.error) {
+        throw new Error(result.error);
+      }
+      console.log(`%c[SUCCESS] Installation of "${moduleName}" was successful.`, "color: green;");
+      successCount++;
+    } catch (err) {
+      console.error(`%c[ERROR] Installation of "${moduleName}" failed: ${err.message || err}`, "color: red;");
+    }
+    await new Promise(r => setTimeout(r, 1500));
+  }
+  console.log(`%c\n=== Script finished, successfully installed ${successCount} of ${moduleList.length} modules! ===`, "font-weight: bold;");
+}
+// end of script
+
+// execute script with module list
+bulkModuleInstall(moduleList);
